@@ -48,18 +48,74 @@ public class User implements Serializable{
 	@JoinTable(name="user_roles",
 			joinColumns=@JoinColumn(name="user_id"),
 			inverseJoinColumns = @JoinColumn(name="role_id"))
-	private Set<Role>role;
+	private Set<Role>roles;
 
+	public User() {
+		
+	}
 	public User(long id) {
 		super();
 		this.id = id;
 	}
 
+	
+	
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
+	public Set<Role> getRoles() {
+		return roles;
+	}
+	public void setRoles(Set<Role> role) {
+		this.roles = role;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 				+ ", username=" + username + ", password=" + password + ", confirmPassword=" + confirmPassword
-				+ ", role=" + role + "]";
+				+ ", roles=" + roles + "]";
 	}
 
 	@Override
@@ -72,7 +128,7 @@ public class User implements Serializable{
 		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + ((role == null) ? 0 : role.hashCode());
+		result = prime * result + ((roles == null) ? 0 : roles.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
@@ -113,10 +169,10 @@ public class User implements Serializable{
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		if (role == null) {
-			if (other.role != null)
+		if (roles == null) {
+			if (other.roles != null)
 				return false;
-		} else if (!role.equals(other.role))
+		} else if (!roles.equals(other.roles))
 			return false;
 		if (username == null) {
 			if (other.username != null)
