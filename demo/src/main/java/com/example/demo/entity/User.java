@@ -54,7 +54,6 @@ public class User implements Serializable{
 	private String password;
 	
 	@Transient
-	@NotBlank
 	private String confirmPassword;
 	
 	/*Con un set obliga a que no se repita ningun valor*/
